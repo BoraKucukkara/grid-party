@@ -1,0 +1,67 @@
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin:0;
+    font-family: system-ui;
+    color:dimgrey;
+}
+
+/* MAIN LAYOUT */
+body > * {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 
+    auto    /* nav */
+    auto    /* header */
+    1fr     /* main */
+    auto;   /* footer */
+}
+/* CONTENT */
+main, footer, nav, main > section > div{
+    padding:2em
+}
+header, footer {
+    background-color: coral;
+    color:azure;
+}
+header {
+    display:grid;
+    grid-template-areas: 'merge';
+    place-items: center;
+}
+header > * {
+    grid-area: merge;
+}
+header > * {
+    max-width: 100vw;
+    max-height: 100vh;
+    gap:0;
+}
+nav {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+nav > span {width: max-content}
+main, main > section {
+    display: grid;
+    gap:1rem;
+    max-width: 100em;
+    place-self: center;
+}
+main > section > div {border:.2em solid coral}
+main > section > div > h2 {color:coral}
+
+@media (min-width: 50em) { /* Desktop */
+    header {grid-template-columns: 1fr 1fr;}
+    header > * {max-width: 50vw;max-height: 100vh;}
+    header > img {grid-column: 2;}
+    header > h1 {grid-column: 1;}
+    main > section  {grid-template-columns:1fr 1fr 1fr;}
+}
